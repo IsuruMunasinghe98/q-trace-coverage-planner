@@ -1,0 +1,7 @@
+.git
+.github
+.venv
+results
+tests
+assets/videos
+*.zip

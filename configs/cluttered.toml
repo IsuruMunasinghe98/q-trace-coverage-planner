@@ -1,0 +1,16 @@
+[planner]
+motion_mode = "adaptive"
+max_reconnect_targets = 4
+moderate_local_turn_cost = 1.0
+reverse_local_turn_cost = 2.0
+
+[local]
+wavefront = 8.38
+turn = 6.29
+uncovered_degree = 5.56
+
+[reconnection]
+path_length = 1.38
+revisit = 5.48
+moderate_turn = 1.99
+reverse_turn = 9.88
