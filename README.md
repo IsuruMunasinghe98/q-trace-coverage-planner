@@ -170,12 +170,35 @@ experiment in a synchronized research view.
     <td align="center" width="50%">
       <strong>Clustered-obstacle trial</strong><br>
       <code>S-10-CO-05 / R-10-CO-05</code><br><br>
-      <a href="assets/videos/S_10_CO_05.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
+
+      <a href="assets/videos/S_10_CO_05.mp4">
+        <img
+          src="assets/videos/previews/S_10_CO_05.gif"
+          alt="Q-TRACE clustered-obstacle robot trial"
+          width="100%">
+      </a>
+
+      <br><br>
+      <a href="assets/videos/S_10_CO_05.mp4">
+        <strong>▶ Watch the complete MP4 video</strong>
+      </a>
     </td>
+
     <td align="center" width="50%">
       <strong>Narrow-passage trial</strong><br>
       <code>S-10-NP-08 / R-10-NP-08</code><br><br>
-      <a href="assets/videos/S_10_NP_08.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
+
+      <a href="assets/videos/S_10_NP_08.mp4">
+        <img
+          src="assets/videos/previews/S_10_NP_08.gif"
+          alt="Q-TRACE narrow-passage robot trial"
+          width="100%">
+      </a>
+
+      <br><br>
+      <a href="assets/videos/S_10_NP_08.mp4">
+        <strong>▶ Watch the complete MP4 video</strong>
+      </a>
     </td>
   </tr>
 </table>
@@ -213,11 +236,7 @@ Q-TRACE/
 
 ## Research scope
 
-This repository is a research reference implementation for known, static,
-binary occupancy grids. Obstacle inflation should be applied before planning
-according to the robot footprint and required clearance. Dynamic obstacles,
-online map discovery, terrain dynamics, gait generation, and low-level robot
-control are outside the present implementation.
+This repository presents the research reference implementation of Q-TRACE, a turn and revisit-aware coverage path planning framework, which combines clearance-aware map preprocessing, wavefront-guided local selection, and turn-aware A* reconnection to achieve complete coverage while reducing travel distance, repeated traversal, and costly heading changes.
 
 ## Citation
 
