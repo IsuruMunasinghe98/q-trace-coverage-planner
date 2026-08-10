@@ -44,16 +44,16 @@ implementations are excluded from the core package.
 
 ### 1. Local wavefront-guided selection
 
-For the current cell \(q_t\) and an uncovered feasible neighbor \(v\), Q-TRACE
+For the current cell $q_t$ and an uncovered feasible neighbor $v$, Q-TRACE
 maximizes
 
-\[
+$$
 S(v)=\lambda_w W(v)-\lambda_t C_{\mathrm{turn}}(v)+\lambda_u U(v),
-\]
+$$
 
-where \(W(v)\) is the wavefront value, \(C_{\mathrm{turn}}(v)\) is the
-heading-change cost, and \(U(v)\) is the number of uncovered feasible
-neighbors of \(v\). Local candidates are uncovered by construction, so the
+where $W(v)$ is the wavefront value, $C_{\mathrm{turn}}(v)$ is the
+heading-change cost, and $U(v)$ is the number of uncovered feasible
+neighbors of $v$. Local candidates are uncovered by construction, so the
 local score contains exactly these three terms.
 
 ### 2. Turn-aware A\* reconnection
@@ -61,12 +61,12 @@ local score contains exactly these three terms.
 When no uncovered neighbor is available, a heading-augmented A\* search finds
 a route to a remaining uncovered cell. Its cumulative cost is
 
-\[
+$$
 g(n)=\alpha L_n+\beta R_n+\gamma T_{90,135,n}+\delta T_{180,n},
-\]
+$$
 
-where \(L_n\) is actual movement length, \(R_n\) is repeated traversal,
-\(T_{90,135,n}\) counts moderate heading changes, and \(T_{180,n}\) counts
+where $L_n$ is actual movement length, $R_n$ is repeated traversal,
+$T_{90,135,n}$ counts moderate heading changes, and $T_{180,n}$ counts
 reverse turns. Repeated traversal is therefore penalized during reconnection,
 where motion can pass through previously covered cells.
 
@@ -106,8 +106,6 @@ The command creates:
 - `coverage_path.png` - coverage visualization;
 - `path.csv` - ordered grid waypoints; and
 - `metrics.json` - coverage, distance, revisit, turn, and motion-mode metrics.
-
-![Example Q-TRACE output](assets/results/example_path.png)
 
 Programmatic use is equally small:
 
@@ -160,48 +158,31 @@ Replace `global` with a category name for category-specific optimization. The
 study uses Optuna's seeded TPE sampler. Parameter bounds, objective weights,
 map count, seed, and best trial are written into the resulting JSON file.
 
-### Reference parameter configurations
-
-| Configuration | Local parameters | Reconnection parameters |
-|---|---|---|
-| Global | \(\lambda_w=9.92\), \(\lambda_t=6.26\), \(\lambda_u=8.36\) | \(\alpha=4.55\), \(\beta=3.06\), \(\gamma=2.01\), \(\delta=9.84\) |
-| Low obstacle | 6.99, 7.30, 4.40 | 4.83, 8.59, 4.90, 4.63 |
-| Cluttered | 8.38, 6.29, 5.56 | 1.38, 5.48, 1.99, 9.88 |
-| Narrow passage | 4.45, 6.59, 0.11 | 5.84, 2.42, 1.09, 8.85 |
-| Clustered obstacle | 1.67, 5.71, 0.41 | 1.56, 7.68, 3.01, 5.93 |
-
-These values are stored as TOML files under [`configs/`](configs/). Use the
-global configuration for a single consistent evaluation across all map
-categories; use category-specific files only for the corresponding controlled
-experiment.
+The optimized configurations are stored as TOML files under
+[`configs/`](configs/). Use the global configuration for a single consistent
+evaluation across all map categories; use category-specific files only for
+the corresponding controlled experiment.
 
 ## Real-robot demonstrations
 
-The following trials show the planned trajectory, Webots execution, live
-physical-robot coverage map, and the Boston Dynamics Spot experiment in a
-synchronized research view. Select a preview to open the full-resolution MP4.
+The following full-length MP4 recordings show the planned trajectory, Webots
+execution, live physical-robot coverage map, and Boston Dynamics Spot
+experiment in a synchronized research view.
 
 <table>
   <tr>
     <td align="center" width="50%">
-      <a href="assets/videos/S_10_CO_05.mp4">
-        <img src="assets/videos/previews/S_10_CO_05.gif" alt="Clustered-obstacle Spot trial" width="100%">
-      </a>
-      <br><strong>Clustered-obstacle trial</strong><br>
-      <code>S-10-CO-05 / R-10-CO-05</code>
+      <strong>Clustered-obstacle trial</strong><br>
+      <code>S-10-CO-05 / R-10-CO-05</code><br><br>
+      <a href="assets/videos/S_10_CO_05.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
     </td>
     <td align="center" width="50%">
-      <a href="assets/videos/S_10_NP_08.mp4">
-        <img src="assets/videos/previews/S_10_NP_08.gif" alt="Narrow-passage Spot trial" width="100%">
-      </a>
-      <br><strong>Narrow-passage trial</strong><br>
-      <code>S-10-NP-08 / R-10-NP-08</code>
+      <strong>Narrow-passage trial</strong><br>
+      <code>S-10-NP-08 / R-10-NP-08</code><br><br>
+      <a href="assets/videos/S_10_NP_08.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
     </td>
   </tr>
 </table>
-
-Direct video links: [clustered-obstacle MP4](assets/videos/S_10_CO_05.mp4) ·
-[narrow-passage MP4](assets/videos/S_10_NP_08.mp4)
 
 ## Dataset organization
 
@@ -228,7 +209,7 @@ Q-TRACE/
 ├── assets/
 │   ├── method/              # Workflow figure in PNG and PDF formats
 │   ├── results/             # Example planner visualization
-│   └── videos/              # Full robot trials and lightweight previews
+│   └── videos/              # Full-length MP4 robot trials
 ├── .github/workflows/       # Python 3.11/3.12 test workflow
 ├── Dockerfile               # Containerized quick-start execution
 └── pyproject.toml           # Installable package and CLI metadata
