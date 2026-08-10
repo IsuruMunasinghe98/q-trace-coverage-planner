@@ -2,15 +2,11 @@
 
 # Q-TRACE
 
-### Turn- and Revisit-Aware Coverage Path Planning for Quadruped Robots
+### Turn and Revisit-Aware Coverage Path Planning for Quadruped Robots
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Research code](https://img.shields.io/badge/status-research%20code-0F6B8D)](#research-scope)
 [![Reproducible CLI](https://img.shields.io/badge/interface-reproducible%20CLI-00A6A6)](#quick-start)
-
-**A compact reference implementation of wavefront-guided local coverage,
-heading-aware A\* reconnection, adaptive 4/8-connected motion, and Bayesian
-parameter optimization.**
 
 </div>
 
