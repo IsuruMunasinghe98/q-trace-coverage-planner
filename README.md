@@ -2,11 +2,15 @@
 
 # Q-TRACE
 
-### Turn and Revisit-Aware Coverage Path Planning for Quadruped Robots
+### Turn- and Revisit-Aware Coverage Path Planning for Quadruped Robots
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Research code](https://img.shields.io/badge/status-research%20code-0F6B8D)](#research-scope)
 [![Reproducible CLI](https://img.shields.io/badge/interface-reproducible%20CLI-00A6A6)](#quick-start)
+
+**A compact reference implementation of wavefront-guided local coverage,
+heading-aware A\* reconnection, adaptive 4/8-connected motion, and Bayesian
+parameter optimization.**
 
 </div>
 
@@ -23,13 +27,13 @@
 ## Overview
 
 Q-TRACE is a grid-based coverage path planner developed for robotic coverage
-tasks in cluttered environments, with special attention to quadruped motion.
+tasks in cluttered environments, with particular attention to quadruped motion.
 It combines four components:
 
-1. a robot-clearance-aware binary occupancy representation
-2. wavefront-guided selection of directly reachable uncovered neighbors
-3. heading-augmented A\* reconnection when local coverage is saturated
-4. Bayesian optimization of seven local-selection and reconnection weights
+1. a robot-clearance-aware binary occupancy representation;
+2. wavefront-guided selection of directly reachable uncovered neighbors;
+3. heading-augmented A\* reconnection when local coverage is saturated; and
+4. Bayesian optimization of seven local-selection and reconnection weights.
 
 The implementation is extracted from the accompanying research notebook and
 reorganized as a documented Python package. Experimental plotting cells,
@@ -75,8 +79,8 @@ route cost.
 
 In `adaptive` mode, the planner evaluates both:
 
-- 4-connected orthogonal motion and
-- valid 8-connected motion with diagonal gap checking
+- 4-connected orthogonal motion; and
+- valid 8-connected motion with diagonal gap checking.
 
 Complete coverage is prioritized first. The final path is then selected by
 actual movement length with deterministic metric-based tie-breaking.
@@ -170,35 +174,12 @@ experiment in a synchronized research view.
     <td align="center" width="50%">
       <strong>Clustered-obstacle trial</strong><br>
       <code>S-10-CO-05 / R-10-CO-05</code><br><br>
-
-      <a href="assets/videos/S_10_CO_05.mp4">
-        <img
-          src="assets/videos/previews/S_10_CO_05.gif"
-          alt="Q-TRACE clustered-obstacle robot trial"
-          width="100%">
-      </a>
-
-      <br><br>
-      <a href="assets/videos/S_10_CO_05.mp4">
-        <strong>▶ Watch the complete MP4 video</strong>
-      </a>
+      <a href="assets/videos/S_10_CO_05.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
     </td>
-
     <td align="center" width="50%">
       <strong>Narrow-passage trial</strong><br>
       <code>S-10-NP-08 / R-10-NP-08</code><br><br>
-
-      <a href="assets/videos/S_10_NP_08.mp4">
-        <img
-          src="assets/videos/previews/S_10_NP_08.gif"
-          alt="Q-TRACE narrow-passage robot trial"
-          width="100%">
-      </a>
-
-      <br><br>
-      <a href="assets/videos/S_10_NP_08.mp4">
-        <strong>▶ Watch the complete MP4 video</strong>
-      </a>
+      <a href="assets/videos/S_10_NP_08.mp4"><strong>▶ Watch the complete MP4 video</strong></a>
     </td>
   </tr>
 </table>
@@ -234,9 +215,25 @@ Q-TRACE/
 └── pyproject.toml           # Installable package and CLI metadata
 ```
 
+## Validation
+
+Run all tests from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The test suite verifies dataset metadata, diagonal clearance, complete reachable
+coverage, final-destination handling, deterministic configuration structure,
+and the public planning API.
+
 ## Research scope
 
-This repository presents the research reference implementation of Q-TRACE, a turn and revisit-aware coverage path planning framework, which combines clearance-aware map preprocessing, wavefront-guided local selection, and turn-aware A* reconnection to achieve complete coverage while reducing travel distance, repeated traversal, and costly heading changes.
+This repository is a research reference implementation for known, static,
+binary occupancy grids. Obstacle inflation should be applied before planning
+according to the robot footprint and required clearance. Dynamic obstacles,
+online map discovery, terrain dynamics, gait generation, and low-level robot
+control are outside the present implementation.
 
 ## Citation
 
