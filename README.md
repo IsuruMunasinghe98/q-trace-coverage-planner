@@ -27,13 +27,13 @@ parameter optimization.**
 ## Overview
 
 Q-TRACE is a grid-based coverage path planner developed for robotic coverage
-tasks in cluttered environments, with particular attention to quadruped motion.
+tasks in cluttered environments, with special attention to quadruped motion.
 It combines four components:
 
-1. a robot-clearance-aware binary occupancy representation;
-2. wavefront-guided selection of directly reachable uncovered neighbors;
-3. heading-augmented A\* reconnection when local coverage is saturated; and
-4. Bayesian optimization of seven local-selection and reconnection weights.
+1. a robot-clearance-aware binary occupancy representation
+2. wavefront-guided selection of directly reachable uncovered neighbors
+3. heading-augmented A\* reconnection when local coverage is saturated
+4. Bayesian optimization of seven local-selection and reconnection weights
 
 The implementation is extracted from the accompanying research notebook and
 reorganized as a documented Python package. Experimental plotting cells,
@@ -79,8 +79,8 @@ route cost.
 
 In `adaptive` mode, the planner evaluates both:
 
-- 4-connected orthogonal motion; and
-- valid 8-connected motion with diagonal gap checking.
+- 4-connected orthogonal motion and
+- valid 8-connected motion with diagonal gap checking
 
 Complete coverage is prioritized first. The final path is then selected by
 actual movement length with deterministic metric-based tie-breaking.
@@ -214,18 +214,6 @@ Q-TRACE/
 ├── Dockerfile               # Containerized quick-start execution
 └── pyproject.toml           # Installable package and CLI metadata
 ```
-
-## Validation
-
-Run all tests from the repository root:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-The test suite verifies dataset metadata, diagonal clearance, complete reachable
-coverage, final-destination handling, deterministic configuration structure,
-and the public planning API.
 
 ## Research scope
 
